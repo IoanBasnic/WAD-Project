@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Marketplace</title>
+    <link rel="shortcut icon" href="images/title-img.png" />
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" />
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <link rel="stylesheet" href="/stylesheets/stylelogreg.css">
+    <link rel="stylesheet" href="/stylesheets/styleMarket.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script src="functions.js"></script>
+
+</head>
+<body onload="loadProducts()">
+<div id="Product_type" class="top-panel">
+    <a href="mainpage.html">Home</a>
+    <a href="market.html">Market</a>
+
+
+    <button onclick="document.getElementById('id04').style.display='block'">Add a product</button>
+</div>
+
+
+<div id="id04" class="modal">
+
+    <form class="modal-content animate" action="/addproduct" method="post" enctype="multipart/form-data">
+        <div class="imgcontainer">
+            <span onclick="document.getElementById('id04').style.display='none'" class="close" title="Close Modal">&times;</span>
+        </div>
+
+        <div class="container">
+
+            <label for="uname"><b>Add Image</b></label>
+            <input type="file" id="img" name="img" accept="image/*">
+
+            <label for="uname"><b>Product name</b></label>
+            <input type="text" placeholder="Enter Product Name" name="pname" required>
+
+            <label for="uname"><b>Description</b></label>
+            <input type="text" placeholder="Enter Description" name="desc" required>
+
+            <label for="uname"><b>Price</b></label>
+            <input type="text" placeholder="Enter Price" name="price" required>
+
+            <label for="uname"><b>Category</b></label>
+            <!--<input type="text" placeholder="Enter Category" name="category" required> -->
+            <select name="category" id="cat">
+
+            </select>
+
+            <button class="btn" type="submit">Submit</button>
+
+        </div>
+
+
+    </form>
+
+</div>
+
+
+<div id="idDel" class="modal">
+
+    <form class="modal-content animate"  action="/delete" method="post">
+        <div class="imgcontainer">
+            <span onclick="document.getElementById('idDel').style.display='none'" class="close" title="Close Modal">&times;</span>
+        </div>
+
+        <div class="container">
+            <label ><b>Are you sure you want to delete this product?</b></label>
+
+
+            <button class="btn"  type="submit" name="myname" id="delchange">Submit</button>
+
+        </div>
+
+
+    </form>
+</div>
+
+<div id="idEdit" class="modal">
+
+    <form class="modal-content animate" action="/editproduct" method="post" enctype="multipart/form-data">
+        <div class="imgcontainer">
+            <span onclick="document.getElementById('idEdit').style.display='none'" class="close" title="Close Modal">&times;</span>
+        </div>
+
+        <div class="container">
+
+            <label for="uname"><b>Add Image</b></label>
+            <input type="file" id="img" name="img" accept="image/*">
+
+            <label for="uname"><b>Product name</b></label>
+            <input type="text" placeholder="Enter Product Name" name="pname" required>
+
+            <label for="uname"><b>Description</b></label>
+            <input type="text" placeholder="Enter Description" name="desc" required>
+
+            <label for="uname"><b>Price</b></label>
+            <input type="text" placeholder="Enter Price" name="price" required>
+
+            <label for="uname"><b>Category</b></label>
+<!--            <input type="text" placeholder="Enter Category" name="category" required>-->
+            <select name="category" id="catEdit">
+
+            </select>
+            <button class="btn" type="submit"  name="adbcde" id="editchange">Submit</button>
+
+        </div>
+
+
+    </form>
+
+</div>
+
+<div id="idBuy" class="modal">
+
+    <form class="modal-content animate" action="/buyproduct" method="post" >
+        <div class="imgcontainer">
+            <span onclick="document.getElementById('idBuy').style.display='none'" class="close" title="Close Modal">&times;</span>
+        </div>
+
+        <div class="container">
+
+            <div class="container">
+                <label ><b>Are you sure you want to buy this product?</b></label>
+
+
+                <button class="btn" type="submit" name="abcname" id="buyprd">Submit</button>
+
+            </div>
+
+        </div>
+
+
+    </form>
+
+</div>
+
+<div id="idAddCategory" class="modal">
+
+    <form class="modal-content animate"  action="/AdminAddCategory" method="post">
+        <div class="imgcontainer">
+            <span onclick="document.getElementById('idAddCategory').style.display='none'" class="close" title="Close Modal">&times;</span>
+        </div>
+
+        <div class="container">
+
+            <label for="uname"><b>Add Category</b></label>
+            <input type="text" placeholder="Enter Category" name="category" required>
+
+            <button class="btn"  type="submit" >Submit</button>
+
+        </div>
+
+
+    </form>
+</div>
+
+<div id="idDeleteCategory" class="modal">
+
+    <form class="modal-content animate"  action="/AdminDeleteCategory" method="post">
+        <div class="imgcontainer">
+            <span onclick="document.getElementById('idDeleteCategory').style.display='none'" class="close" title="Close Modal">&times;</span>
+        </div>
+
+        <div class="container">
+
+            <label for="uname"><b>Delete Category</b></label>
+            <select name="category" id="catAdminDelete">
+
+            </select>
+            <button class="btn"  type="submit" >Submit</button>
+
+        </div>
+
+
+    </form>
+</div>
+
+<div id="idEditCategory" class="modal">
+
+    <form class="modal-content animate"  action="/AdminEditCategory" method="post">
+        <div class="imgcontainer">
+            <span onclick="document.getElementById('idEditCategory').style.display='none'" class="close" title="Close Modal">&times;</span>
+        </div>
+
+        <div class="container">
+
+            <label for="uname"><b>Edit Category</b></label>
+
+            <select name="category" id="catAdminEdit">
+
+            </select>
+
+            <input type="text" placeholder="Enter Category" name="category_new" required>
+
+            <button class="btn"  type="submit" >Submit</button>
+
+        </div>
+
+
+    </form>
+</div>
+<div id="pro" class="row-Market">
+
+
+
+</div>
+
+
+
+<script>
+    // Get the modal
+    var modal = document.getElementById('id04');
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+        if (event.target == modal) {
+
+            modal.style.display = "none";
+        }
+    }
+
+</script>
+<script>
+
+        var modal = document.getElementById('idDel');
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function (event) {
+            if (event.target == modal) {
+
+                modal.style.display = "none";
+            }
+        }
+
+</script>
+
+<script>
+
+        var modal = document.getElementById('idEdit');
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+
+
+
+</script>
+
+<script>
+
+        var modal = document.getElementById('idBuy');
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+
+</script>
+<script>
+    var modal = document.getElementById('idAddCategory');
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+</script>
+
+
+<script>
+    var modal = document.getElementById('idEditCategory');
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+</script>
+
+<script>
+    var modal = document.getElementById('idDeleteCategory');
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+</script>
+
+<script>
+    var xhttp4 = new XMLHttpRequest();
+
+    xhttp4.onreadystatechange = function () {
+
+
+        if (this.readyState == 4 && this.status == 200) {
+
+            var result = this.responseText;
+
+            var results = JSON.parse(result);
+
+            results.forEach((categories) => {
+                var categ = document.createElement("option");
+
+                categ.append(categories.category);
+                categ.value = categories.category;
+
+                document.getElementById('cat').appendChild(categ);
+
+
+            });
+
+            results.forEach((categories) => {
+                var categ = document.createElement("option");
+
+                categ.append(categories.category);
+                categ.value = categories.category;
+
+
+                document.getElementById('catEdit').appendChild(categ);
+
+            });
+
+            results.forEach((categories) => {
+                var categ = document.createElement("option");
+
+                categ.append(categories.category);
+                categ.value = categories.category;
+
+
+                document.getElementById('catAdminEdit').appendChild(categ);
+
+            });
+
+            results.forEach((categories) => {
+                var categ = document.createElement("option");
+
+                categ.append(categories.category);
+                categ.value = categories.category;
+
+
+                document.getElementById('catAdminDelete').appendChild(categ);
+
+            });
+        }
+        ;
+    }
+
+
+
+    xhttp4.open("GET", "/getCategories", true);
+    xhttp4.send();
+</script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+
+
+.column-Market {
+    text-align: center;
+    box-sizing: border-box;
+    float: left;
+    width: 50%;
+    padding: 10px 20px;
+    height: auto;
+    width: auto;
+    background-color: white;
+
+
+    margin: 70px 70px 70px 70px;
+    border-radius: 40px;
+    border: solid;
+    border-color: #007bff;
+    border-width: thin;
+}
+
+.row-Market {
+    padding: 10px;
+
+    box-sizing: border-box;
+
+
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    grid-column-gap: 20px;
+    grid-column-row: 20px;
+}
+
+.row-Market button {
+    background-color: #007bff;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+
+.row-Market button:hover {
+    opacity: 0.8;
+}
+
+.row-Market img {
+    width: 50%;
+}
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+
+@media screen and (max-width: 600px) {
+    .column-Market {
+        width: 100%;
+    }
+}
