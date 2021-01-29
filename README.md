@@ -9,5 +9,7 @@ HTML5, CSS3, Node.JS, MySQL (using XAMPP application)
 <img src="https://i.ibb.co/NxZsMyN/c.png">
 <img src="https://i.ibb.co/9Vqnk8P/d.png">
 </div>
+
 ## Author
+
 * **Bașnic Ioan** - [GitHub Profile](https://github.com/IoanBasnic)
